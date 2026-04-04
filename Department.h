@@ -1,4 +1,5 @@
 #pragma once
+#include "Course.h"
 #include <iostream>
 using namespace std;
 
@@ -11,7 +12,8 @@ class Department
 
     public:
     Department(); // Default constructor
-    Department(char* dn); // Constructor with department name
+    Department(const char* dn); // Constructor with department name
     void AddCourse(const Course c);
+    void Show();
     ~Department();
 };

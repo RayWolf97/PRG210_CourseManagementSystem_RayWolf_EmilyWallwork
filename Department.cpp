@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include "Department.h"
+#include "Course.h"
 using namespace std;
 
 Department::Department() // Default constructor
@@ -10,7 +11,7 @@ Department::Department() // Default constructor
     TotalCourses = 0; // Sets total courses to 0
 }
 
-Department::Department(char* dn) // Constructor with department name perameter
+Department::Department(const char* dn) // Constructor with department name perameter
 {
     strcpy(DepName, dn);
     Courses = nullptr;
@@ -38,6 +39,15 @@ void Department::AddCourse(const Course c)
         Courses = new Course[1];
         Courses[0] = c;
         TotalCourses = 1;
+    }
+}
+
+void Department::Show() {
+    cout << "Department name: " << DepName << endl;
+    cout << "Courses: " << endl;
+    for (int i = 0; i < TotalCourses; i++) {
+        Courses[i].Show();
+        cout << endl;
     }
 }
 
