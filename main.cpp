@@ -1,19 +1,50 @@
 #include <iostream>
-#include "Course.h"
+#include "Interface.h"
+#include "AdminInterface.h"
+#include "StudentInterface.h"
 #include "Department.h"
+#include <iostream>
+#include <limits>
+
 using namespace std;
 
-int main() {
-    Department test1;
-    Department test2("Test2");
-    Course math("Math", 123);
-    Course gym("Gym", 456, "M/W", 20);
-    Course art;
-    test2.AddCourse(math);
-    test2.AddCourse(gym);
-    test1.AddCourse(art);
-    test1.Show();
-    test2.Show();
-    cout << "Hello Emily. <3 Happy birthday!" << endl;
+Department* Departments = nullptr;
+int DeptCount = 0;
+const char* csvFile = "Courses.csv";
+
+int main () {
+    Interface* ui = nullptr;
+    int UserInput;
+
+    while (true) {
+        cout << "Please select from the following options: " << endl;
+        cout << "1. Student 2.Admin 3. Exit" << endl;
+        while (!(cin >> UserInput)) {
+            cout << "Invalid input. Please enter a number: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        if (UserInput == 1) {
+            ui = new StudentInterface();
+            ui->Menu();
+            delete ui;
+            ui = nullptr;
+        }
+        else if (UserInput == 2) {
+            ui = new AdminInterface();
+            ui->Menu();
+            delete ui;
+            ui = nullptr;
+        }
+        else if (UserInput == 3) {
+            break;
+        }
+        else {
+            cout << "Invalid input. Please try again." << endl;
+        }
+    }
+    delete[] Departments;
+    Departments = nullptr;
+
     return 0;
 }
