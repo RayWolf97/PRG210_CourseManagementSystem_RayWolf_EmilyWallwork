@@ -11,12 +11,9 @@ extern int DeptCount;
 
 using namespace std;
 
-AdminInterface::AdminInterface() { }                      // Default constructor: initializes the AdminInterface object
+AdminInterface::AdminInterface() {}                      // Default constructor: initializes the AdminInterface object
 
-AdminInterface::~AdminInterface() {                       // Destructor: releases dynamically allocated department memory
-    delete[] Departments;                                 // Deletes the global departments array
-    Departments = nullptr;                                // Sets pointer to nullptr to avoid dangling pointer
-}
+AdminInterface::~AdminInterface() {}                       // Destructor
 
 void AdminInterface::Menu() {                             // Displays admin menu and handles user interaction
     cout << "Welcome Admin!" << endl;                     // Prints welcome message
@@ -27,7 +24,11 @@ void AdminInterface::Menu() {                             // Displays admin menu
         cout << "Please select from the following options: " << endl; // Prompts user for input
         cout << "1.List Departments 2. Add Department 3.Add Course to Department 4.Save changes to CSV 5.Exit" << endl; // Displays menu options
 
-        cin >> UserInput;                                       // Reads user input
+        while (!(cin >> UserInput)) {                           // Validates numeric input
+            cout << "Invalid input. Please enter a number: ";
+            cin.clear();                                        // Clears error state
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');// Removes invalid input from buffer
+            }                                                   // Reads user input
 
         if (ValidateRange(UserInput, 1, 5)) {                   // Validates input is within allowed range
             if (UserInput == 1) {                               // Option 1: List departments
@@ -45,9 +46,9 @@ void AdminInterface::Menu() {                             // Displays admin menu
             else if (UserInput == 5) {                          // Option 5: Exit program
                 break;                                          // Exits the menu loop
             }
-            else {                                              // Invalid input case
+        }
+        else {                                              // Invalid input case
             Errors(1);                                          // Displays error message for invalid input
-            }
         }
     }
 }

@@ -1,10 +1,14 @@
-Total Departments: 3
-Department 1: Test 1, Number of courses: 1
+Total Departments: 4
+Department 1: Test 1, Number of courses: 2
 Courses:
-Test 1 Course, M/W, 100
+Test 1 Course 1, M/W, 100
+Test 1 Course 2, T/R, 200
 Department 2: Test 2, Number of courses: 1
 Courses:
-Test 2 Course, T/R, 200
+Test 2 Course 1, W/F, 200
 Department 3: Test 3, Number of courses: 1
 Courses:
-Test 3 Course, W/F, 300
+Test 3 Course 1, T/R, 300
+Department 4: Test 4, Number of courses: 1
+Courses:
+Test 4 Course 1, W/F, 400

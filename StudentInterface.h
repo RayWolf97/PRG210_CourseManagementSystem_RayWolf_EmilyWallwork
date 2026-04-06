@@ -7,14 +7,14 @@ using namespace std;
 
 class StudentInterface : public Interface {
     private:
-    Cart StudentCart;
+    Cart StudentCart;                           // Cart object to store users cart
 
     public:
-    StudentInterface();
-    ~StudentInterface();
+    StudentInterface();                         // Student Interface constructor 
+    ~StudentInterface();                        // Student Interface destructor
     
-    void Menu() override;
-    void ShowCartMenu();
-    void BrowseDepts();
-    void DeptCourseMenu(int deptIndex);
+    void Menu() override;                       // Student Interface main menu
+    void ShowCartMenu();                        // Displays Cart Menu options (list, checkout, return)
+    void BrowseDepts();                         // Displays departments and provides options to view courses
+    void DeptCourseMenu(int deptIndex);         // Displays courses for a user selected department and allows user to add it to their cart
 };

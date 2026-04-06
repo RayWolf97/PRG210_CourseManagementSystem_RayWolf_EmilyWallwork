@@ -7,34 +7,34 @@ extern int DeptCount;
 
 using namespace std;
 
-Course::Course() {
-    strcpy(CourseName, "");
-    CourseCode = 0;
-    strcpy(CourseSchedule, "");
-    CoursePrice = 0;
+Course::Course() {                                                         // Default constructor initializes empty course
+    strcpy(CourseName, "");                                                // Set course name to empty string
+    CourseCode = 0;                                                        // Initialize course code to 0
+    strcpy(CourseSchedule, "");                                            // Set schedule to empty string
+    CoursePrice = 0;                                                       // Initialize price to 0
 
 }
 
-Course::Course(const char* Name, int Code) {
-    strcpy(CourseName, Name);
-    CourseCode = Code;
-    strcpy(CourseSchedule, "");
-    CoursePrice = 0;
+Course::Course(const char* Name, int Code) {                               // Constructor initializes name and code
+    strcpy(CourseName, Name);                                              // Copy provided name
+    CourseCode = Code;                                                     // Set course code
+    strcpy(CourseSchedule, "");                                            // Initialize schedule as empty
+    CoursePrice = 0;                                                       // Initialize price to 0
 }
 
-Course::Course(const char* Name, int Code, char* Schedule, double Price) {
-    strcpy(CourseName, Name);   
-    CourseCode = Code;
-    strcpy(CourseSchedule, Schedule);   
-    CoursePrice = Price;
+Course::Course(const char* Name, int Code, char* Schedule, double Price) { // Full constructor initializes all fields
+    strcpy(CourseName, Name);                                              // Copy course name
+    CourseCode = Code;                                                     // Set course code
+    strcpy(CourseSchedule, Schedule);                                      // Copy schedule
+    CoursePrice = Price;                                                   // Set course price
 }
 
-void Course::Show() const{
+void Course::Show() const{                                                 // Displays all course details
     cout<< "Course Name: " << CourseName << ", Course Code: " << CourseCode << ", Course Schedule: " << CourseSchedule << ", Course Price: " << CoursePrice << endl;
-}  //Displaying all the information sotred about the course 
+}                                                                          //Displaying all the information sotred about the course 
 
-Course courses[100];   // creating an array of size 100 to store course objects in 
-int count = 0;         // counting how many course objects there are, starting at 0
+Course courses[100];                                                       // Global array storing up to 100 courses 
+int count = 0;                                                             // counting how many course objects there are, starting at 0
 
 void Course::AddCourse(const char* Name, int Code, char* Schedule, double Price){
     if (count<100){                                                                     //make sure there is room in the array for the new course
@@ -48,16 +48,16 @@ double Course::GetCoursePrice() const{
 }
 
 void Course::CourseList(){
-    for (int i = 0; i < count; i++) {        //iterating a for loop over the amount of course objects in the array, courses
-        cout<< i+1 << ". ";                  //displaying the item number
-        courses[i].Show();                   // displaying each iteration of courses after displaying the item number 
+    for (int i = 0; i < count; i++) {             //iterating a for loop over the amount of course objects in the array, courses
+        cout<< i+1 << ". ";                       //displaying the item number
+        courses[i].Show();                        // displaying each iteration of courses after displaying the item number 
     };
 } 
 
-const char* Course::GetCourseName() const{
+const char* Course::GetCourseName() const{        // Returns course name
     return CourseName;
 }
 
-const char* Course::GetCourseSchedule() const{
+const char* Course::GetCourseSchedule() const{    // Returns course schedule
     return CourseSchedule;
 }
